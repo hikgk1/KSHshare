@@ -14,6 +14,7 @@
 	<sf:form action="/" commandName="userImageContainer" enctype="multipart/form-data" method="post">
 		<p>Name: <sf:input path="name" type="text" /></p>
 		<p>Image: <sf:input path="image" type="file" /></p>
+		<p>Tags: <sf:input path="tags" type="text" /></p>
 		<p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
 	</sf:form>
 </body>

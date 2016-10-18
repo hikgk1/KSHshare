@@ -64,7 +64,9 @@ public class FileUploadServiceImplementation implements FileUploadService {
 			System.out.println(e.getMessage());
 		}
 
-		repository.save(new UserImageContainer(userImageContainer.getName(), uuid));
+		userImageContainer.setUuid(uuid);
+
+		repository.save(userImageContainer);
 
 		return uuid;
 	}
@@ -72,5 +74,10 @@ public class FileUploadServiceImplementation implements FileUploadService {
 	@Override
 	public List<UserImageContainer> findByName(String name) {
 		return repository.findByName(name);
+	}
+
+	@Override
+	public List<UserImageContainer> findByUuid(String name) {
+		return repository.findByUuid(name);
 	}
 }

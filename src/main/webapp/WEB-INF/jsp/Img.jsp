@@ -10,5 +10,6 @@
 	<h1>HBV501G Project Spring Boot Skeleton</h1>
 	<p>Img site</p>
 	<img src="/images/${imgId}.${imgExt}">
+	<p>${imgTags}</p>
 </body>
 </html>
