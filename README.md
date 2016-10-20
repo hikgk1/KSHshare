@@ -58,7 +58,7 @@ Breytið:
 
 spring.datasource.url=jdbc:postgresql://localhost:5432/\<Database Nafn\>
 
-spring.datasource.username=\<Nafn nýja notandans}
+spring.datasource.username=\<Nafn nýja notandans\>
 
 spring.datasource.password=\<Lykilorð\>
 
