@@ -7,20 +7,20 @@ Opnið terminal/cmd og staðsetjið ykkur þannig að þið getið keyrt skipani
 
 ##Windows
 ###Keyrið
-createuser -U {Notandi sem getur búið til Role/DB} -P {Nafn á nýjum notanda}
+createuser -U \<Notandi sem getur búið til Role/DB\> -P \<Nafn á nýjum notanda\>
 
-createdb -U {Notandi sem getur búið til Role/DB} -O {Nafnið sem var búið til í síðustu skipun} {Database Nafn}
+createdb -U \<Notandi sem getur búið til Role/DB\> -O \<Nafnið sem var búið til í síðustu skipun\> \<Database Nafn\>
 
 og gerið það sem promptið biður um
 
 ###Eða
-psql -U {Notandi sem getur búið til Role/DB}
+psql -U \<Notandi sem getur búið til Role/DB\>
 
 Gefið svo skipanirnar:
 
-CREATE ROLE {Nafn} PASSWORD '{Lykilorð}' NOSUPERUSER NOCREATEDB NOCREATEROLE INHERIT LOGIN;
+CREATE ROLE \<Nafn\> PASSWORD '\<Lykilorð\>' NOSUPERUSER NOCREATEDB NOCREATEROLE INHERIT LOGIN;
 
-CREATE DATABASE {Database Nafn} OWNER {Nafnið sem var búið til í síðustu skipun};
+CREATE DATABASE \<Database Nafn\> OWNER \<Nafnið sem var búið til í síðustu skipun\>;
 
 \q
 
@@ -31,9 +31,9 @@ Búið til Role og Database í gegnum pgAdmin
 ###Keyrið
 sudo -u postgres -i
 
-createuser -P {Nafn á nýjum notanda}
+createuser -P \<Nafn á nýjum notanda\>
 
-createdb -O {Nafnið sem var búið til í síðustu skipun} {Database Nafn}
+createdb -O \<Nafnið sem var búið til í síðustu skipun\> \<Database Nafn\>
 
 ###Eða
 sudo -u postgres -i
@@ -42,9 +42,9 @@ psql
 
 Gefið svo skipanirnar:
 
-CREATE ROLE {Nafn} PASSWORD '{Lykilorð}' NOSUPERUSER NOCREATEDB NOCREATEROLE INHERIT LOGIN;
+CREATE ROLE \<Nafn\> PASSWORD '\<Lykilorð\>' NOSUPERUSER NOCREATEDB NOCREATEROLE INHERIT LOGIN;
 
-CREATE DATABASE {Database Nafn} OWNER {Nafnið sem var búið til í síðustu skipun};
+CREATE DATABASE \<Database Nafn\> OWNER \<Nafnið sem var búið til í síðustu skipun\>;
 
 \q
 
@@ -56,17 +56,17 @@ Farið í möppu forritsins og opnið ./src/main/resources/application.propertie
 
 Breytið:
 
-spring.datasource.url=jdbc:postgresql://localhost:5432/{Database Nafn}
+spring.datasource.url=jdbc:postgresql://localhost:5432/\<Database Nafn\>
 
-spring.datasource.username={Nafn nýja notandans}
+spring.datasource.username=\<Nafn nýja notandans}
 
-spring.datasource.password={Lykilorð}
+spring.datasource.password=\<Lykilorð\>
 
 Farið svo í möppu forritsins og opnið ./src/main/resources/path.cfg
 
 Breytið:
 
-filePath={Hvar sem þið viljið að myndirnar séu vistaðar á tölvunni ykkar}
+filePath=\<Hvar sem þið viljið að myndirnar séu vistaðar á tölvunni ykkar\>
 
 ##Buildið með:
 mvn package
