@@ -33,6 +33,7 @@ public class FileUploadServiceImplementation implements FileUploadService {
 
 	@Override
 	public String store(UserImageContainer userImageContainer) {
+		// Load the settings from path.cfg
 		try {
 			stillingar = new Properties();
 			InputStream in = getClass().getResourceAsStream("/path.cfg");
@@ -42,13 +43,15 @@ public class FileUploadServiceImplementation implements FileUploadService {
 			System.out.println(e.getMessage());
 		}
 
-		String uuid = UUID.randomUUID().toString();
-		String ending = ".jpg";
+		String uuid = UUID.randomUUID().toString(); // Generate a new Uuid
+		String ending = ".jpg"; // Assume jpg extension as default
 		MultipartFile mynd = userImageContainer.getImage();
 
+		// Find out if the file is an image, and what it's extension is
+		// Uses apache tika to do this (https://tika.apache.org/)
 		try {
-			Tika test = new Tika();
-			String type = test.detect(mynd.getBytes());
+			Tika tika = new Tika();
+			String type = tika.detect(mynd.getBytes());
 			if(!type.substring(0, 5).equals("image")) return "redirect:/notimage";
 			TikaConfig config = TikaConfig.getDefaultConfig();
 			ending = config.getMimeRepository().forName(type).getExtension();
@@ -56,6 +59,7 @@ public class FileUploadServiceImplementation implements FileUploadService {
 			System.out.println(e.getMessage());
 		}
 
+		// Save the image to the path defined by path.cfg using the generated uuid and correct extension
 		try {
 			mynd.transferTo(
 				new File(stillingar.getProperty("filePath") + uuid + ending)
@@ -77,7 +81,12 @@ public class FileUploadServiceImplementation implements FileUploadService {
 	}
 
 	@Override
-	public List<UserImageContainer> findByUuid(String name) {
-		return repository.findByUuid(name);
+	public List<UserImageContainer> findByUuid(String uuid) {
+		return repository.findByUuid(uuid);
+	}
+
+	@Override
+	public List<UserImageContainer> findByTagsContaining(String tag) {
+		return repository.findByTagsContaining(tag);
 	}
 }

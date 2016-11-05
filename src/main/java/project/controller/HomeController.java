@@ -20,7 +20,7 @@ public class HomeController {
 	public HomeController(FileUploadService fileUploadService) {
 		this.fileUploadService = fileUploadService;
 	}
-	
+
 	@RequestMapping(value="/", method=RequestMethod.GET)
 	public String home(Model model) {
 		model.addAttribute("userImageContainer", new UserImageContainer());
@@ -31,8 +31,8 @@ public class HomeController {
 	@RequestMapping(value="/", method=RequestMethod.POST)
 	public String submit(@ModelAttribute("userImageContainer") UserImageContainer userImageContainer, Model model) {
 		String uuid = fileUploadService.store(userImageContainer);
-		model.addAttribute("userImageContainer", new UserImageContainer());
-		
+		//model.addAttribute("userImageContainer", new UserImageContainer());
+
 		return "redirect:/img/" + uuid;
 	}
 }

@@ -20,10 +20,10 @@ public class UserImageContainer {
 	public UserImageContainer() {
 	}
 
-	public UserImageContainer(String name, String uuid) {
+	/*public UserImageContainer(String name, String uuid) {
 		this.name = name;
 		this.uuid = uuid;
-	}
+	}*/
 
 	public UserImageContainer(MultipartFile image, String name) {
 		this.image = image;

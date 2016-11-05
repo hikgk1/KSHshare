@@ -15,7 +15,8 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 
 	@Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-    	try {
+		// Load the settings from path.cfg
+		try {
     		stillingar = new Properties();
     		InputStream asdf = getClass().getResourceAsStream("/path.cfg");
 			stillingar.load(asdf);
@@ -24,7 +25,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 			System.out.println(e.getMessage());
 		}
 
-		// Makes file system <filePath> accessable on /images/ on the webhost
+		// Make file directory defined in path.cfg accessable on /images/ on the webhost
         registry.addResourceHandler("/images/**").addResourceLocations("file:///" + stillingar.getProperty("filePath"));
 
     }

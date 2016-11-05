@@ -9,4 +9,5 @@ public interface FileRepository extends JpaRepository<UserImageContainer, Long> 
 	UserImageContainer save(UserImageContainer userImageContainer);
 	List<UserImageContainer> findByName(String name);
 	List<UserImageContainer> findByUuid(String uuid);
+	List<UserImageContainer> findByTagsContaining(String tag);
 }
