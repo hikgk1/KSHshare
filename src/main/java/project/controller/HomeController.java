@@ -31,7 +31,6 @@ public class HomeController {
 	@RequestMapping(value="/", method=RequestMethod.POST)
 	public String submit(@ModelAttribute("userImageContainer") UserImageContainer userImageContainer, Model model) {
 		String uuid = fileUploadService.store(userImageContainer);
-		//model.addAttribute("userImageContainer", new UserImageContainer());
 
 		return "redirect:/img/" + uuid;
 	}

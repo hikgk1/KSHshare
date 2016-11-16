@@ -3,19 +3,15 @@ package project.service.implementation;
 import project.persistence.repositories.FileRepository;
 import project.persistence.entities.UserImageContainer;
 import project.service.FileUploadService;
-import java.util.List;
+import project.service.FileStorageService;
 
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.io.File;
-import java.lang.Exception;
-
-import java.util.Properties;
-import java.io.InputStream;
-
+import java.util.List;
 import java.util.UUID;
+
 import org.apache.tika.*;
 import org.apache.tika.config.TikaConfig;
 import org.apache.tika.mime.MimeTypes;
@@ -24,26 +20,17 @@ import org.apache.tika.mime.MimeType;
 @Service
 public class FileUploadServiceImplementation implements FileUploadService {
 	private FileRepository repository;
-	private Properties stillingar;
+	private FileStorageService storage;
 
 	@Autowired
-	public FileUploadServiceImplementation(FileRepository repository) {
+	public FileUploadServiceImplementation(FileRepository repository, FileStorageService storage) {
 		this.repository = repository;
+		this.storage = storage;
 	}
 
 	@Override
 	public String store(UserImageContainer userImageContainer) {
-		// Load the settings from path.cfg
-		try {
-			stillingar = new Properties();
-			InputStream in = getClass().getResourceAsStream("/path.cfg");
-			stillingar.load(in);
-			in.close();
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-		}
-
-		String uuid = UUID.randomUUID().toString(); // Generate a new Uuid
+		String uuid = userImageContainer.makeUuid(); // Generate a new Uuid
 		String ending = ".jpg"; // Assume jpg extension as default
 		MultipartFile mynd = userImageContainer.getImage();
 
@@ -59,16 +46,9 @@ public class FileUploadServiceImplementation implements FileUploadService {
 			System.out.println(e.getMessage());
 		}
 
-		// Save the image to the path defined by path.cfg using the generated uuid and correct extension
-		try {
-			mynd.transferTo(
-				new File(stillingar.getProperty("filePath") + uuid + ending)
-				);
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-		}
+		storage.store(mynd, uuid, ending);
 
-		userImageContainer.setUuid(uuid);
+		userImageContainer.setEnding(ending);
 
 		repository.save(userImageContainer);
 

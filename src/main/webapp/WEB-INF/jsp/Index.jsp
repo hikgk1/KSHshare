@@ -5,11 +5,10 @@
 
 <html lang="en">
 <head>
-	<title>Index</title>
+	<title>KSHSharing</title>
 </head>
 <body>
-	<h1>HBV501G Project Spring Boot Skeleton</h1>
-	<p>This skeleton of a Spring Boot Web project was made to help groups...</p>
+	<h1>Upload a picture</h1>
 	<h1>Form</h1>
 	<sf:form action="/" commandName="userImageContainer" enctype="multipart/form-data" method="post">
 		<p>Name: <sf:input path="name" type="text" /></p>

@@ -4,12 +4,11 @@
 
 <html lang="en">
 <head>
-	<title>Img</title>
+	<title>KSHSharing</title>
 </head>
 <body>
-	<h1>HBV501G Project Spring Boot Skeleton</h1>
-	<p>Img site</p>
-	<img src="/images/${imgId}.${imgExt}">
+	<h1>${imgName}</h1>
+	<img src="/images/${imgId}${imgExt}">
 	<p>${imgTags}</p>
 </body>
 </html>
