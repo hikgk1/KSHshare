@@ -11,18 +11,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
 import project.service.FileUploadService;
-import project.service.FileStorageService;
 import project.persistence.entities.UserImageContainer;
 
 @Controller
 public class ImgController {
 	private FileUploadService fileUploadService;
-	private FileStorageService fileStorageService;
 
 	@Autowired
-	public ImgController(FileUploadService fileUploadService, FileStorageService fileStorageService) {
+	public ImgController(FileUploadService fileUploadService) {
 		this.fileUploadService = fileUploadService;
-		this.fileStorageService = fileStorageService;
 	}
 
 	@RequestMapping(value="/img/{imgId}", method=RequestMethod.GET)
