@@ -35,6 +35,7 @@ public class SearchController {
 	public String searchSubmit(@ModelAttribute("searchInput") SearchInput searchInput, Model model) {
         List<UserImageContainer> results = fileUploadService.findByTagsContaining(searchInput.getTag());
         model.addAttribute("gallery", results);
+		model.addAttribute("siteUrl", System.getenv("KSHAWSURL"));
 
 		return "Gallery";
 	}
