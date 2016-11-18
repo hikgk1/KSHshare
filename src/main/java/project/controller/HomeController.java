@@ -23,6 +23,7 @@ public class HomeController {
 
 	@RequestMapping(value="/", method=RequestMethod.GET)
 	public String home(Model model) {
+		System.out.println("Why this no work?");
 		model.addAttribute("userImageContainer", new UserImageContainer());
 
 		return "Index";
