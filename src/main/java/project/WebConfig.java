@@ -14,6 +14,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         //registry.addResourceHandler("/images/**").addResourceLocations("file:///" + System.getenv("KSHIMGPATH"));
 		registry.addResourceHandler("/css/**").addResourceLocations("/css/");
 		registry.addResourceHandler("/js/**").addResourceLocations("/js/");
+		registry.addResourceHandler("/test/**").addResourceLocations("/WEB-INF/");
     }
 
 }
