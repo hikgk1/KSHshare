@@ -8,7 +8,9 @@
 </head>
 <body>
 	<h1>${imgName}</h1>
-	<img src="/images/${imgId}${imgExt}">
+	<a href="/">Home</a>
+	<br />
+	<img src="${siteUrl}${imgId}${imgExt}">
 	<p>${imgTags}</p>
 </body>
 </html>

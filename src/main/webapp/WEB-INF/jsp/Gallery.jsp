@@ -11,7 +11,7 @@
 	<a href="/">Home</a>
 	<br />
 	<c:forEach items="${gallery}" var="image">
-		<a href="/img/${image.uuid}"><img src="/images/${image.uuid}${image.ending}"></a>
+		<a href="/img/${image.uuid}"><img src="${siteUrl}${image.uuid}${image.ending}"></a>
 		<br />
 	</c:forEach>
 </body>

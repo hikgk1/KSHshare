@@ -36,6 +36,7 @@ public class ImgController {
 			model.addAttribute("imgName", imgName);
 			model.addAttribute("imgExt", imgExt);
 			model.addAttribute("imgId", imgId);
+			model.addAttribute("siteUrl", System.getenv("KSHAWSURL"));
 
 			return "Img";
 		}
