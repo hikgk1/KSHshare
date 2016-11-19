@@ -6,14 +6,23 @@
 <html lang="en">
 <head>
 	<title>KSHSharing</title>
+	<link
+		rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+		integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+		crossorigin="anonymous">
+	<link rel="stylesheet" href="/css/styles.css">
 </head>
-<body>
+<body class="container">
 	<h1>Search by tag</h1>
 	<a href="/">Home</a>
-	<h1>Form</h1>
-	<sf:form action="/search" commandName="searchInput" enctype="multipart/form-data" method="post">
-		<p>Name: <sf:input path="tag" type="text" /></p>
-		<p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
-	</sf:form>
+	<div class="row">
+		<div class="col-md-6">
+			<sf:form class="form-group" action="/search" commandName="searchInput" enctype="multipart/form-data" method="post">
+				<p>Tag: <sf:input class="form-control" path="tag" type="text" /></p>
+				<p><input class="btn btn-default" type="submit" value="Search" /></p>
+			</sf:form>
+		</div>
+	</div>
 </body>
 </html>
