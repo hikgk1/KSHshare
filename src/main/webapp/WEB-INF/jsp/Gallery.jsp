@@ -5,14 +5,22 @@
 <html lang="en">
 <head>
 	<title>KSHSharing</title>
+	<link
+		rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+		integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+		crossorigin="anonymous">
+	<link rel="stylesheet" href="/css/styles.css">
 </head>
-<body>
+<body class="container">
 	<h1>Gallery</h1>
 	<a href="/">Home</a>
-	<br />
-	<c:forEach items="${gallery}" var="image">
-		<a href="/img/${image.uuid}"><img src="${siteUrl}${image.uuid}${image.ending}"></a>
-		<br />
-	</c:forEach>
+	<div class="row">
+		<c:forEach items="${gallery}" var="image">
+			<div class="col-md-3 col-sm-6 height-200" style="margin-bottom: 2rem;">
+				<a href="/img/${image.uuid}" class="thumbnail" style="border: none"><img class="height-200" src="${siteUrl}${image.uuid}${image.ending}"></a>
+			</div>
+		</c:forEach>
+	</div>
 </body>
 </html>
