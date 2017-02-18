@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import project.service.FileUploadService;
 import project.persistence.entities.UserImageContainer;
 
-
 @Controller
 public class HomeController {
 	private FileUploadService fileUploadService;
