@@ -33,7 +33,10 @@ public class FileUploadServiceImplementation implements FileUploadService {
 		String uuid = userImageContainer.makeUuid(); // Generate a new Uuid
 		String ending = ".jpg"; // Assume jpg extension as default
 		MultipartFile mynd = userImageContainer.getImage();
+		
 		if(mynd == null) System.out.println("Fékk ekki mynd");
+		System.out.println(userImageContainer.getName());
+		System.out.println(userImageContainer.getTags());
 
 		// Find out if the file is an image, and what it's extension is
 		// Uses apache tika to do this (https://tika.apache.org/)

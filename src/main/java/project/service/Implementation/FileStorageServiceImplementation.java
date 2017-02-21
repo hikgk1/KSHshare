@@ -25,7 +25,6 @@ public class FileStorageServiceImplementation implements FileStorageService {
 		AmazonS3 s3client = new AmazonS3Client();
 		try {
 			String keyName = "images/" + uuid + ending;
-			if(mynd.getInputStream() == null) System.out.println("Meiri tilraun");
 
 			s3client.putObject(new PutObjectRequest(bucketName, keyName, mynd.getInputStream(), null));
 		} catch (AmazonServiceException ase) {
