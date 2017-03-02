@@ -27,10 +27,12 @@ public class ImgRestController {
 		// Find the ending and the tags associated with the image
 		List<UserImageContainer> imgList = fileUploadService.findByUuid(imgId);
 
-    if(!imgList.isEmpty()) {
-      return imgList.get(0);
-    }
-
-		return new UserImageContainer();
+    	if(!imgList.isEmpty()) {
+      		return imgList.get(0);
+  		} else {
+			UserImageContainer res = new UserImageContainer();
+			res.setUuid("Error");
+			return res;
+  		}
 	}
 }
