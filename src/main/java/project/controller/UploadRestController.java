@@ -26,7 +26,7 @@ public class UploadRestController {
 	public UserImageContainer submit(@ModelAttribute("userImageContainer") UserImageContainer userImageContainer, Model model) {
 		String uuid = fileUploadService.store(userImageContainer);
 
-		List<UserImageContainer> imgList = fileUploadService.findByUuid(imgId);
+		List<UserImageContainer> imgList = fileUploadService.findByUuid(uuid);
 
 		if(!imgList.isEmpty()) {
 			return imgList.get(0);
