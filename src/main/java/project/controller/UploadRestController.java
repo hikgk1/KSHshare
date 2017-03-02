@@ -25,7 +25,7 @@ public class UploadRestController {
 	@RequestMapping(value="/uploadr", method=RequestMethod.POST)
 	public UserImageContainer submit(@ModelAttribute("userImageContainer") UserImageContainer userImageContainer, Model model) {
 		String uuid = fileUploadService.store(userImageContainer);
-		
+
 		List<UserImageContainer> imgList = fileUploadService.findByUuid(imgId);
 
 		if(!imgList.isEmpty()) {
@@ -35,4 +35,5 @@ public class UploadRestController {
 			res.setUuid("Error");
 			return res;
 		}
+	}
 }
