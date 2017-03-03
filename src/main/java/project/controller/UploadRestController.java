@@ -33,7 +33,9 @@ public class UploadRestController {
 		if(!imgList.isEmpty()) {
 			System.out.println("Fékk niðurstöðu");
 			System.out.println(imgList.get(0).getUuid());
-			return imgList.get(0);
+			UserImageContainer res = imgList.get(0);
+			System.out.println(res.getUuid());
+			return res;
 		} else {
 			System.out.println("Fékk ekki niðurstöðu");
 			UserImageContainer res = new UserImageContainer();

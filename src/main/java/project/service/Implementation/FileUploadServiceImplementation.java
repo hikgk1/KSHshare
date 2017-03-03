@@ -33,10 +33,6 @@ public class FileUploadServiceImplementation implements FileUploadService {
 		String uuid = userImageContainer.makeUuid(); // Generate a new Uuid
 		String ending = ".jpg"; // Assume jpg extension as default
 		MultipartFile mynd = userImageContainer.getImage();
-		
-		if(mynd == null) System.out.println("Fékk ekki mynd");
-		System.out.println(userImageContainer.getName());
-		System.out.println(userImageContainer.getTags());
 
 		// Find out if the file is an image, and what it's extension is
 		// Uses apache tika to do this (https://tika.apache.org/)
@@ -44,6 +40,7 @@ public class FileUploadServiceImplementation implements FileUploadService {
 			Tika tika = new Tika();
 			String type = tika.detect(mynd.getBytes());
 			if(!type.substring(0, 5).equals("image")) return "redirect:/notimage";
+			System.out.println("mimetype: " + type.substring(0, 5));
 			TikaConfig config = TikaConfig.getDefaultConfig();
 			ending = config.getMimeRepository().forName(type).getExtension();
 		} catch (Exception e) {
