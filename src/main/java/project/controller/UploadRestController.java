@@ -26,11 +26,16 @@ public class UploadRestController {
 	public UserImageContainer submit(@ModelAttribute("userImageContainer") UserImageContainer userImageContainer, Model model) {
 		String uuid = fileUploadService.store(userImageContainer);
 
+		System.out.println(uuid);
+
 		List<UserImageContainer> imgList = fileUploadService.findByUuid(uuid);
 
 		if(!imgList.isEmpty()) {
+			System.out.println("Fékk niðurstöðu");
+			System.out.println(imgList.get(0).getUuid());
 			return imgList.get(0);
 		} else {
+			System.out.println("Fékk ekki niðurstöðu");
 			UserImageContainer res = new UserImageContainer();
 			res.setUuid("Error");
 			return res;
