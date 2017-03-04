@@ -34,6 +34,7 @@ public class UploadRestController {
 			System.out.println("Fékk niðurstöðu");
 			System.out.println(imgList.get(0).getUuid());
 			UserImageContainer res = imgList.get(0);
+			System.out.println("Out of order?");
 			System.out.println(res.getUuid());
 			return res;
 		} else {
