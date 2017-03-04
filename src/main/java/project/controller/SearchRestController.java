@@ -25,10 +25,10 @@ public class SearchRestController {
 	}
 
     @RequestMapping(value="/searchr", method=RequestMethod.POST)
-	public UserImageContainer[] searchSubmit(@ModelAttribute("searchInput") SearchInput searchInput, Model model) {
+	public Object[] searchSubmit(@ModelAttribute("searchInput") SearchInput searchInput, Model model) {
 		String query = searchInput.getTag();
 		List<UserImageContainer> results = fileUploadService.findByTagsContaining(query);
 
-		return (UserImageContainer[]) results.toArray();
+		return results.toArray();
 	}
 }
